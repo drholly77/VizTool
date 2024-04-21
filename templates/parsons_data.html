@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Demo Site</title>
+    <link rel='stylesheet' href='/static/styles/main.css'>
+    <link rel="stylesheet" href="/static/styles/bootstrap.min.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+</head>
+
+<body>
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="/parsons">Main</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">All data</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    
+    <div class="container-fluid">
+        {% for link in links %}
+        <h3><a href="/parsons/task/{{link}}">{{ link }} - numbers as annotations</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="/parsons/task/{{link}}/alternative">{{ link }} - testcases as annotations</a></h3>
+        {% endfor %}
+    </div>
+    <script src="/static/scripts/jquery-3.2.1.slim.min.js"></script>
+    <script src="/static/scripts/popper.js"></script>
+    <script src="/static/scripts/bootstrap.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Demo Site</title>
+    <link rel='stylesheet' href='/static/styles/main.css'>
+    <link rel="stylesheet" href="/static/styles/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/styles/bootstrap4-toggle.min.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <script src="https://kit.fontawesome.com/6dff826e03.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="bs-canvas-overlay bs-canvas-anim bg-dark position-fixed w-100 h-100"></div>
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="/">Main</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/data">All data</a>
+                </li>
+                <li class="d-lg-none nav-item">
+                    <a href="" class="nav-link" type="button" data-toggle="canvas" data-target="#bs-canvas-right"
+                        aria-expanded="false" aria-controls="bs-canvas-right">
+                        &#x2699; Graph Settings
+                    </a>
+                </li>
+            </ul>
+            <button class="btn btn-primary d-none d-lg-block navbar-toggler" type="button" data-toggle="canvas"
+                data-target="#bs-canvas-right" aria-expanded="false" aria-controls="bs-canvas-right">
+                <svg class="off-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                    <path fill-rule="evenodd"
+                        d="M16 12a4 4 0 11-8 0 4 4 0 018 0zm-1.5 0a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"></path>
+                    <path fill-rule="evenodd"
+                        d="M12 1c-.268 0-.534.01-.797.028-.763.055-1.345.617-1.512 1.304l-.352 1.45c-.02.078-.09.172-.225.22a8.45 8.45 0 00-.728.303c-.13.06-.246.044-.315.002l-1.274-.776c-.604-.368-1.412-.354-1.99.147-.403.348-.78.726-1.129 1.128-.5.579-.515 1.387-.147 1.99l.776 1.275c.042.069.059.185-.002.315-.112.237-.213.48-.302.728-.05.135-.143.206-.221.225l-1.45.352c-.687.167-1.249.749-1.304 1.512a11.149 11.149 0 000 1.594c.055.763.617 1.345 1.304 1.512l1.45.352c.078.02.172.09.22.225.09.248.191.491.303.729.06.129.044.245.002.314l-.776 1.274c-.368.604-.354 1.412.147 1.99.348.403.726.78 1.128 1.129.579.5 1.387.515 1.99.147l1.275-.776c.069-.042.185-.059.315.002.237.112.48.213.728.302.135.05.206.143.225.221l.352 1.45c.167.687.749 1.249 1.512 1.303a11.125 11.125 0 001.594 0c.763-.054 1.345-.616 1.512-1.303l.352-1.45c.02-.078.09-.172.225-.22.248-.09.491-.191.729-.303.129-.06.245-.044.314-.002l1.274.776c.604.368 1.412.354 1.99-.147.403-.348.78-.726 1.129-1.128.5-.579.515-1.387.147-1.99l-.776-1.275c-.042-.069-.059-.185.002-.315.112-.237.213-.48.302-.728.05-.135.143-.206.221-.225l1.45-.352c.687-.167 1.249-.749 1.303-1.512a11.125 11.125 0 000-1.594c-.054-.763-.616-1.345-1.303-1.512l-1.45-.352c-.078-.02-.172-.09-.22-.225a8.469 8.469 0 00-.303-.728c-.06-.13-.044-.246-.002-.315l.776-1.274c.368-.604.354-1.412-.147-1.99-.348-.403-.726-.78-1.128-1.129-.579-.5-1.387-.515-1.99-.147l-1.275.776c-.069.042-.185.059-.315-.002a8.465 8.465 0 00-.728-.302c-.135-.05-.206-.143-.225-.221l-.352-1.45c-.167-.687-.749-1.249-1.512-1.304A11.149 11.149 0 0012 1zm-.69 1.525a9.648 9.648 0 011.38 0c.055.004.135.05.162.16l.351 1.45c.153.628.626 1.08 1.173 1.278.205.074.405.157.6.249a1.832 1.832 0 001.733-.074l1.275-.776c.097-.06.186-.036.228 0 .348.302.674.628.976.976.036.042.06.13 0 .228l-.776 1.274a1.832 1.832 0 00-.074 1.734c.092.195.175.395.248.6.198.547.652 1.02 1.278 1.172l1.45.353c.111.026.157.106.161.161a9.653 9.653 0 010 1.38c-.004.055-.05.135-.16.162l-1.45.351a1.833 1.833 0 00-1.278 1.173 6.926 6.926 0 01-.25.6 1.832 1.832 0 00.075 1.733l.776 1.275c.06.097.036.186 0 .228a9.555 9.555 0 01-.976.976c-.042.036-.13.06-.228 0l-1.275-.776a1.832 1.832 0 00-1.733-.074 6.926 6.926 0 01-.6.248 1.833 1.833 0 00-1.172 1.278l-.353 1.45c-.026.111-.106.157-.161.161a9.653 9.653 0 01-1.38 0c-.055-.004-.135-.05-.162-.16l-.351-1.45a1.833 1.833 0 00-1.173-1.278 6.928 6.928 0 01-.6-.25 1.832 1.832 0 00-1.734.075l-1.274.776c-.097.06-.186.036-.228 0a9.56 9.56 0 01-.976-.976c-.036-.042-.06-.13 0-.228l.776-1.275a1.832 1.832 0 00.074-1.733 6.948 6.948 0 01-.249-.6 1.833 1.833 0 00-1.277-1.172l-1.45-.353c-.111-.026-.157-.106-.161-.161a9.648 9.648 0 010-1.38c.004-.055.05-.135.16-.162l1.45-.351a1.833 1.833 0 001.278-1.173 6.95 6.95 0 01.249-.6 1.832 1.832 0 00-.074-1.734l-.776-1.274c-.06-.097-.036-.186 0-.228.302-.348.628-.674.976-.976.042-.036.13-.06.228 0l1.274.776a1.832 1.832 0 001.734.074 6.95 6.95 0 01.6-.249 1.833 1.833 0 001.172-1.277l.353-1.45c.026-.111.106-.157.161-.161z">
+                    </path>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <div id="bs-canvas-right" class="bs-canvas bs-canvas-anim bs-canvas-right position-fixed bg-light h-100">
+        <header class="d-flex justify-content-between p-3 bg-primary">
+            <button type="button" class="pb-1 bs-canvas-close close" aria-label="Close"><span aria-hidden="true"
+                    class="text-light">&times;</span></button>
+            <h4 class="d-inline-block text-light mb-0">Options</h4>
+        </header>
+        <div class="bs-canvas-content px-3">
+            <div class="d-flex justify-content-between align-items-center my-4">
+                <label class="my-0" for="#red-green">Red-Green Colorblindness</label>
+                <input id="red-green" type="checkbox" data-toggle="toggle">
+            </div>
+            <div class="d-flex justify-content-between align-items-center my-4">
+                <label class="my-0" for="#labels">Answer Labels</label>
+                <input id="labels" type="checkbox" data-toggle="toggle">
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div id="graphDisplay" class="row justify-content-center px-2">
+            <div class="col-2 fill-height">
+                <div class="card my-3">
+                    <h3 class="text-center my-2">Filter by Answers Tried</h3>
+                    <div class="card-body">
+                        <div class="px-4">
+                            <input id="filterSlider" type="range" value="100">
+                        </div>
+                    </div>
+                </div>
+                <div class="border overflow-auto d-flex flex-column">
+                    <div class="d-flex justify-content-between align-items-center my-2 px-3">
+                        <h3>Users</h3>
+                        <div>
+                            <btn class="btn btn-primary" id="selectClear" type="button">Clear</btn>
+                            <btn class="btn btn-primary" id="selectAll" type="button">Select All</btn>
+                        </div>
+                    </div>
+                    <div class="border-top p-1 overflow-auto" id="userList"></div>
+                </div>
+            </div>
+            <div class="col-7 d-flex flex-column">
+                <svg id="lessonGraph" viewbox="0 0 1040 585">
+                    <defs>
+                        <marker id="OpaqueTriangle" refX="3" refY="4" markerUnits="userSpaceOnUse" markerWidth="12"
+                            markerHeight="8" orient="auto">
+                            <path d="M 0 0 12 4 0 8 3 4" style="fill: rgb(0, 0, 0);"></path>
+                        </marker>
+                        <marker id="TranslucentTriangle" refX="3" refY="4" markerUnits="userSpaceOnUse" markerWidth="12"
+                            markerHeight="8" orient="auto">
+                            <path d="M 0 0 12 4 0 8 3 4" opacity="0.1" style="fill: rgb(0, 0, 0);"></path>
+                        </marker>
+                        <filter x="-0.1" y="-0.1" width="1.2" height="1.2" id="solidFilter">
+                            <feflood flood-color="#ddd" flood-opacity='0.8' result="bg"></feflood>
+                            <femerge>
+                                <femergenode in="bg"> </femergenode>
+                                <femergenode in="SourceGraphic"> </femergenode>
+                            </femerge>
+                        </filter>
+                    </defs>
+                </svg>
+                <div id="zoomButtonContainer">
+                    <btn class="btn btn-secondary inactive" id="zoomOut"><i class="fas fa-search-minus"></i></btn>
+                    <btn class="btn btn-secondary" id="zoomIn"><i class="fas fa-search-plus"></i></btn>
+                </div>
+                <div class="fill-height">
+                    <div id="colorKey"></div>
+                </div>
+                <div class="d-flex justify-content-between px-2">
+                    <div id="gaveup" class="keyLabel">Gave Up</div>
+                    <div id="incorrect" class="keyLabel">Incorrect Answers</div>
+                    <div id="correct" class="keyLabel">Correct Answers</div>
+                </div>
+            </div>
+            <div class="col-3 fill-height py-3">
+                <div class="card">
+                    <h3 class="text-center card-title">Selected Answer</h3>
+                    <div id="nodeInfo" class="card-body" style="border: 1px solid black">
+                        <h4 id="nodeName">Starting Point</h4>
+                        <h4 id="nodeAppearances">Occurrences: </h4>
+                        <h4 id="nodeDistance">Average Distance: </h4>
+                        <h4 id="nodeCorrect">Correct: </h4>
+                    </div>
+                </div>
+                <btn class="btn btn-primary" id="splitNodes" type="button">Split</btn>
+                <div class="card mt-3">
+                    <h3 class="text-center card-title">Size Key</h3>
+                    <svg class="mt-2 card-body p-0" id="sizeKey" viewbox="0 0 372 0"></svg>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <style>
+        .ultimate-stats {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background-color: lightgrey;
+            height: 250px;
+            width: 370px;
+            border: 2px dashed fuchsia;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 18px;
+            padding: 1em;
+            overflow-y: auto;
+        }
+        .ultimate-stats h1 {
+            color: fuchsia;
+            font-size: 29px;
+            font-weight: 800;
+        }
+        .bold {
+            font-weight: 600;
+        }
+        span {
+            font-weight: 400;
+        }
+    </style>
+    <div id="ultimate-stats" class="ultimate-stats">
+        <h1>Stats:</h1>
+        <p class="bold">Average distance: <span id="avg-distance"></span></p>
+        <p class="bold">% straight to correct: <span id="straight2correct"></span></p>
+        <p class="bold">Gave up: <span id="gave-up"></span></p>
+        <p class="bold">Most popular failures (occurences/# of users):</p>
+        <ul id="failures"></ul>
+    </div>
+
+
+    <script src="/static/scripts/jquery-3.2.1.slim.min.js"></script>
+    <script src="/static/scripts/popper.js"></script>
+    <script src="/static/scripts/bootstrap.min.js"></script>
+    <script src="/static/scripts/bootstrap4-toggle.min.js"></script>
+    <script src="/static/scripts/d3.v4.min.js"></script>
+    <script src="/static/scripts/graph_reader/lesson_reader.js"></script>
+    <script src="/static/scripts/graph_reader/node.js"></script>
+    <script src="/static/scripts/sidenav.js"></script>
+
+    <!-- Changed the code inside this one (removed .substring(table.indexOf('<tbody>') +  7)) -->
+    <script type="text/javascript">
+        const table = "{{ table }}";
+    </script>
+    <script src="/static/scripts/graph_reader/main_graph_reader.js"></script>
+
+    <script src="/static/scripts/d3graph.js"></script>
+    <script> updateAnswerLabels(1) </script>
+</body>
+
+</html>

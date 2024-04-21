@@ -1,0 +1,1 @@
+this folder hosts all the uploads to the website 

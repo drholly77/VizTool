@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,700;0,800;1,400;1,500&display=swap" rel="stylesheet">
+    <title>Upload</title>
+</head>
+<body>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        .box {
+            width: 55%;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+        input[type="file"] {
+            font-size: 19px;
+            border: 2px dashed grey;
+            border-radius: 10px;
+            height: 250px;
+            width: 80%;
+            max-width: 550px;
+            font-family: 'Poppins', sans-serif;
+        }
+        a:link, a:visited, a:active {
+            color: violet;
+            text-decoration: underline;
+        }
+        a:hover {
+            text-decoration: none;
+        }
+    </style>
+
+    <div style="padding: 1em">
+        <a href="/">Home</a>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="/data">All data</a>
+    </div>
+
+    <div class="box">
+        <h2>Upload a ZIP folder to the database ({{ mode }})</h2>
+        <p>
+            <i style="font-weight: 500;">Please, make sure each folder has only one assignment in it.
+                For more instructions on the format of the data, please read below
+            </i>
+        </p>
+        <form method="post" enctype="multipart/form-data" onsubmit="alert('The form is submitted. Please wait while the data is being processed. Note that it may take up to several minutes for large files. Please, do not refresh the window')">
+            <label>Please select the course from which the data is gathered</label>
+            <br>
+            <input type="radio" name="coursename" value="220" required>CSSE 220
+            <input type="radio" name="coursename" value="230">CSSE 230
+            <br>
+
+            <p style="font-weight: 500;">Choose from the options given below or enter a new tag (used to sort output on the <a href="/data">data page</a>)</p>
+            <p>
+                <i>
+                    Tags are used to filter data on the data page. Because the database may have the same assignment from different quarters
+                    and it does not merge the two but separates them, it would be confusing to store data by asignment name. Instead,
+                    we use the folder name. Not to look for folder names you need, with the tag that you enter here, you can quickly sort
+                    the data and find, say all folders ever uploaded for the 220 TwelveProblems assignment
+                </i>
+            </p>
+            <input name="tag" list="tags" style="font-family: 'Poppins', sans-serif;" required>
+            <p style="font-size: small;">
+                <i>
+                    The input provides several default tags, but you can also create a new one, and it will be automatically stored in the
+                    database so that you can reuse it later
+                </i>
+            </p>
+            <datalist id="tags">
+                
+                <option value="220"></option>
+                <option value="230"></option>
+                <option value="warmupandstretching"></option>
+                <option value="twelve problems"></option>
+                {% for tag in tags %}
+                <option value="{{tag}}"></option>
+                {% endfor %}
+
+            </datalist>
+
+            
+            <label style="font-weight: 700;">Upload the ZIP file by selecting it or dragging and dropping</label>
+            <p>
+                <a href="https://docs.google.com/document/d/1jv7DKRNYFGx_eoS6zQfupEPJk9hFLX6U5y6y843Kc6o/edit?usp=sharing" target="_blank">ZIP folder structure for CSSE 220</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="https://docs.google.com/document/d/1VvRkO52bB0I_3bEKugrO-KaSmD1v94imo4l8Sp7It6I/edit?usp=sharing" target="_blank">ZIP folder structure for CSSE 230</a>
+            </p>
+
+            <input type="file" accept=".zip" name="folder" required>
+            <br><br>
+            <input type="submit" style="font-family: 'Poppins', sans-serif; font-size: 22px;">
+        </form>
+    </div>
+</body>
+</html>
