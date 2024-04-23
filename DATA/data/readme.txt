@@ -1,0 +1,1 @@
+This folder contains the original uploaded folder, unzipped but structure not modified

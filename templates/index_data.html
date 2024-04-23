@@ -1,0 +1,63 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Demo Site</title>
+    <link rel='stylesheet' href='/static/styles/main.css'>
+    <link rel="stylesheet" href="/static/styles/bootstrap.min.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+</head>
+
+<body>
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="/">Main</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">All data</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <h3>You can filter by tags here:</h3>
+    <input list="tags" oninput="filterByTags(this)">
+    <datalist id="tags">
+        {% for tag in tags %}
+        <option value="{{tag}}"></option>
+        {% endfor %}
+    </datalist>
+    
+    <div class="container-fluid">
+        {% for link in links %}
+        <h3 id="assignment_link~{{link[1]}}~{{loop.index}}" class="fakeclasslol"><a href="/task/{{link[0]}}">{{ link[0] }}</a></h3>
+        {% endfor %}
+    </div>
+    <script src="/static/scripts/jquery-3.2.1.slim.min.js"></script>
+    <script src="/static/scripts/popper.js"></script>
+    <script src="/static/scripts/bootstrap.min.js"></script>
+
+    <script>
+        function filterByTags(sender) {
+            document.querySelectorAll('.fakeclasslol').forEach( (link) => {
+                if (link.id.split('~')[1].includes(sender.value)) {
+                    link.hidden = false
+                } else {
+                    link.hidden = true
+                }
+            })
+        }
+    </script>
+</body>
+
+</html>
